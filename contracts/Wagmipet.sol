@@ -21,6 +21,7 @@ contract WAGMIpet is OwnableUpgradeable, ERC721Upgradeable, ERC721EnumerableUpgr
     CountersUpgradeable.Counter private _tokenIds;
 
     event CaretakerLoved(address indexed caretaker, uint256 indexed amount);
+    event Adopted(address indexed caretaker, string indexed name);
 
     mapping (uint256 => uint256) internal _lastFeedBlock;
     mapping (uint256 => uint256) internal _lastCleanBlock;
@@ -55,6 +56,8 @@ contract WAGMIpet is OwnableUpgradeable, ERC721Upgradeable, ERC721EnumerableUpgr
         _boredom[newTokenId] = 0;
         _sleepiness[newTokenId] = 0;
         _mint(_msgSender(), newTokenId);
+
+        emit Adopted(_msgSender(), name);
 
         return newTokenId;
     }
