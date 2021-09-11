@@ -36,6 +36,7 @@ contract WAGMIpet is OwnableUpgradeable, ERC721Upgradeable, ERC721EnumerableUpgr
     mapping (address => uint256) public love;
 
     function initialize(address trustedForwarder) public initializer {
+        __Ownable_init();
         __ERC721_init("WagmiPet", "PET");
         __ERC2771Context_init(trustedForwarder);
      }
