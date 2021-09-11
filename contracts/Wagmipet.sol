@@ -134,6 +134,14 @@ contract WAGMIpet is OwnableUpgradeable, ERC721Upgradeable, ERC721EnumerableUpgr
         return _names[tokenId];
     }
 
+    function setName(uint256 tokenId, string memory name) public {
+        require(_exists(tokenId), "pet does not exist");
+        require(ownerOf(tokenId) == _msgSender(), "not your pet");
+        require(getAlive(tokenId), "no longer with us");
+
+        _names[tokenId] = name;
+    }
+
     function getStatus(uint256 tokenId) public view returns (string memory) {
         require(_exists(tokenId), "pet does not exist");
 
