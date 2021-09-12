@@ -72,9 +72,8 @@ contract WAGMIpet is OwnableUpgradeable, ERC721Upgradeable, ERC721EnumerableUpgr
         require(ownerOf(tokenId) == _msgSender(), "not your pet");
         require(getHunger(tokenId) > 0, "i dont need to eat");
         require(getAlive(tokenId), "no longer with us");
-        require(getBoredom(tokenId) < 80, "im too tired to eat");
+        require(getBoredom(tokenId) < 80, "im too bored to eat");
         require(getUncleanliness(tokenId) < 80, "im feeling too gross to eat");
-        require(getHunger(tokenId) > 0, "i dont need to eat");
 
         _lastFeedBlock[tokenId] = block.number;
 
